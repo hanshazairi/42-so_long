@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 20:57:13 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 00:18:00 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_g(t_game *g)
 	g->map.e = 0;
 	g->map.p = 0;
 	g->map.diff_cols = 0;
-	g->map.px = 16;
+	g->map.px = 32;
 }
 
 void	init_lines_and_images(char *file, t_game *g)
