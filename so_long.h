@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 18:38:05 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:56:36 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	put_images(t_game *g);
 int		key_hook(int keycode, t_game *g);
 
 /* gameplay.c */
+void	end_game(t_game *g);
 void	move(t_game *g);
 
 #endif

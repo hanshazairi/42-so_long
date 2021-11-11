@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 18:37:40 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:56:47 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	put_images(t_game *g)
 int	key_hook(int keycode, t_game *g)
 {
 	if (keycode == ESC)
-		printf("Esc\n");
+		end_game(g);
 	else
 	{
 		if (keycode == LEFT)
