@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 21:07:43 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 01:38:21 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,8 @@ void	move(t_game *g)
 			end_game(g);
 		g->lines[g->player.actual.y][g->player.actual.x] = '0';
 		g->lines[g->player.attempt.y][g->player.attempt.x] = 'P';
+		g->player.moves += 1;
 		mlx_clear_window(g->mlx, g->win);
 		put_images(g);
-		g->player.moves += 1;
-		printf("%d\n", g->player.moves);
 	}
 }

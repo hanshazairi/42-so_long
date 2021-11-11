@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 00:18:00 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 01:36:27 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 #include <stdlib.h>
 #include "so_long.h"
 #include "minilibx_mms_20200219/mlx.h"
+#include "libft/libft.h"
 
-static void	update_player(t_game *g, int i, int j)
+static int	update_player(t_game *g, int i, int j)
 {
 	g->player.attempt.x = j;
 	g->player.attempt.y = i;
 	g->player.actual.x = j;
 	g->player.actual.y = i;
+	return (1);
 }
 
 void	init_g(t_game *g)
@@ -66,16 +68,17 @@ void	init_lines_and_images(char *file, t_game *g)
 
 void	put_images(t_game *g)
 {
-	int	i;
-	int	j;
-	int	(*f)(void *, void *, void *, int x, int y);
+	int			i;
+	int			j;
+	int			(*f)(void *, void *, void *, int x, int y);
+	const char	*str = ft_itoa(g->player.moves);
 
 	f = mlx_put_image_to_window;
-	i = 0;
-	while (i < g->map.rows)
+	i = -1;
+	while (++i < g->map.rows)
 	{
-		j = 0;
-		while (j < g->map.cols)
+		j = -1;
+		while (++j < g->map.cols)
 		{
 			if (g->lines[i][j] == '1')
 				f(g->mlx, g->win, g->o, j * g->map.px, i * g->map.px);
@@ -83,12 +86,10 @@ void	put_images(t_game *g)
 				f(g->mlx, g->win, g->c, j * g->map.px, i * g->map.px);
 			else if (g->lines[i][j] == 'E')
 				f(g->mlx, g->win, g->e, j * g->map.px, i * g->map.px);
-			else if (g->lines[i][j] == 'P')
+			else if (g->lines[i][j] == 'P' && update_player(g, i, j))
 				f(g->mlx, g->win, g->p, j * g->map.px, i * g->map.px);
-			if (g->lines[i][j] == 'P')
-				update_player(g, i, j);
-			++j;
 		}
-		++i;
 	}
+	mlx_string_put(g->mlx, g->win, 12, 22, 16777215, (char *)str);
+	free((char *)str);
 }
