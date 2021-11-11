@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 20:54:30 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 21:07:43 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	end_game(t_game *g)
 	mlx_destroy_image(g->mlx, g->p);
 	mlx_clear_window(g->mlx, g->win);
 	mlx_destroy_window(g->mlx, g->win);
+	free(g->mlx);
 	exit(0);
 }
 
