@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:09:53 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/10 18:18:43 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 17:55:15 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <stdlib.h>
 #include "so_long.h"
 #include "libft/libft.h"
+
+static int	char_count(char *line, int c)
+{
+	int	ret;
+
+	ret = 0;
+	while (*line)
+		if (*line++ == c)
+			++ret;
+	return (ret);
+}
 
 static int	is_set(char *line, char *set)
 {
@@ -60,11 +71,11 @@ static int	is_rectangular_and_cep(char *file, t_map *map)
 		else if ((int)ft_strlen(line) != map->cols)
 			map->diff_cols = 1;
 		if (ft_strchr(line, 'C'))
-			map->c += 1;
+			map->c += char_count(line, 'C');
 		if (ft_strchr(line, 'E'))
-			map->e += 1;
+			map->e += char_count(line, 'E');
 		if (ft_strchr(line, 'P'))
-			map->p += 1;
+			map->p += char_count(line, 'P');
 		free(line);
 		line = get_next_line(fd);
 	}
