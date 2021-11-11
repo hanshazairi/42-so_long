@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 18:56:36 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:00:58 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 # define BUFFER_SIZE 42
 # define ESC 53
-# define LEFT 123
-# define RIGHT 124
-# define DOWN 125
-# define UP 126
+# define LEFT 0
+# define RIGHT 2
+# define DOWN 1
+# define UP 13
 
 typedef struct s_xy
 {
