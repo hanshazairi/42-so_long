@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 18:56:47 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 19:05:35 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ int	key_hook(int keycode, t_game *g)
 {
 	if (keycode == ESC)
 		end_game(g);
-	else
+	else if (keycode == LEFT || keycode == RIGHT || keycode == DOWN \
+			|| keycode == UP)
 	{
 		if (keycode == LEFT)
 			g->player.attempt.x = g->player.actual.x - 1;
