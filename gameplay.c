@@ -6,20 +6,28 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 18:36:18 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 18:56:26 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "so_long.h"
 #include "minilibx_mms_20200219/mlx.h"
 
-static void	end_game(t_game *g)
+void	end_game(t_game *g)
 {
+	char	**tmp;
+
 	if (g->player.c == g->map.c)
 		printf("You win!\n");
 	else
 		printf("You lose!\n");
+	tmp = g->lines;
+	while (*tmp)
+		free(*tmp++);
+	free(g->lines);
+	exit(0);
 }
 
 void	move(t_game *g)
