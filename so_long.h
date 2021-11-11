@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 19:00:58 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/11 20:57:29 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int		is_valid_map(char *file, t_map *map);
 void	init_g(t_game *g);
 void	init_lines_and_images(char *file, t_game *g);
 void	put_images(t_game *g);
-int		key_hook(int keycode, t_game *g);
 
 /* gameplay.c */
 void	end_game(t_game *g);
