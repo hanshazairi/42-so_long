@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:27:34 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 20:57:24 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 20:02:12 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 		g.win = mlx_new_window(g.mlx, g.map.cols * g.map.px, \
 				g.map.rows * g.map.px, "so_long - hbaddrul");
 		init_lines_and_images(argv[1], &g);
+		init_enemies(&g);
 		put_images(&g);
 		mlx_hook(g.win, 17, 0, red_circle_pressed, &g);
 		mlx_key_hook(g.win, key_hook, &g);

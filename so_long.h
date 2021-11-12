@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 20:57:29 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 19:33:19 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_map
 	int		c;
 	int		e;
 	int		p;
+	int		v;
 	int		diff_cols;
 	int		px;
 	char	**lines;
@@ -54,9 +55,11 @@ typedef struct s_game
 	void		*c;
 	void		*e;
 	void		*p;
+	void		*v;
 	void		*mlx;
 	void		*win;
 	t_player	player;
+	t_player	*enemies;
 	t_map		map;
 }	t_game;
 
@@ -69,6 +72,7 @@ int		is_valid_map(char *file, t_map *map);
 /* setup.c */
 void	init_g(t_game *g);
 void	init_lines_and_images(char *file, t_game *g);
+void	init_enemies(t_game *g);
 void	put_images(t_game *g);
 
 /* gameplay.c */

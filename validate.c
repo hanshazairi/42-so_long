@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:09:53 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/11 17:55:15 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 14:19:28 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ static int	is_rectangular_and_cep(char *file, t_map *map)
 			map->e += char_count(line, 'E');
 		if (ft_strchr(line, 'P'))
 			map->p += char_count(line, 'P');
+		if (ft_strchr(line, 'V'))
+			map->v += char_count(line, 'V');
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -101,7 +103,7 @@ int	is_valid_map(char *file, t_map *map)
 	{
 		if ((i == 1 || i == map->rows) && !is_set(line, "1"))
 			is_valid = 0;
-		else if (i != 1 && i != map->rows && (!is_set(line, "01CEP") \
+		else if (i != 1 && i != map->rows && (!is_set(line, "01CEPV") \
 				|| line[0] != '1' || line[map->cols - 1] != '1'))
 			is_valid = 0;
 		free(line);

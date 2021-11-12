@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 01:36:27 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/12 19:33:17 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ static int	update_player(t_game *g, int i, int j)
 	return (1);
 }
 
+static int	update_enemies(t_game *g, int i, int j, int k)
+{
+	g->enemies[k].attempt.x = j;
+	g->enemies[k].attempt.y = i;
+	g->enemies[k].actual.x = j;
+	g->enemies[k].actual.y = i;
+	return (1);
+}
+
 void	init_g(t_game *g)
 {
 	g->player.c = 0;
@@ -33,6 +42,7 @@ void	init_g(t_game *g)
 	g->map.c = 0;
 	g->map.e = 0;
 	g->map.p = 0;
+	g->map.v = 0;
 	g->map.diff_cols = 0;
 	g->map.px = 32;
 }
@@ -64,17 +74,33 @@ void	init_lines_and_images(char *file, t_game *g)
 			&g->map.px);
 	g->p = mlx_png_file_to_image(g->mlx, "sprites/p.png", &g->map.px, \
 			&g->map.px);
+	g->v = mlx_png_file_to_image(g->mlx, "sprites/v.png", &g->map.px, \
+			&g->map.px);
+}
+
+void	init_enemies(t_game *g)
+{
+	int			k;
+	t_player	*enemies;
+
+	enemies = malloc(sizeof(t_player) * g->map.v);
+	if (!enemies)
+		return ;
+	k = -1;
+	g->enemies = enemies;
 }
 
 void	put_images(t_game *g)
 {
 	int			i;
 	int			j;
+	int			k;
 	int			(*f)(void *, void *, void *, int x, int y);
 	const char	*str = ft_itoa(g->player.moves);
 
 	f = mlx_put_image_to_window;
 	i = -1;
+	k = -1;
 	while (++i < g->map.rows)
 	{
 		j = -1;
@@ -88,6 +114,8 @@ void	put_images(t_game *g)
 				f(g->mlx, g->win, g->e, j * g->map.px, i * g->map.px);
 			else if (g->lines[i][j] == 'P' && update_player(g, i, j))
 				f(g->mlx, g->win, g->p, j * g->map.px, i * g->map.px);
+			else if (g->lines[i][j] == 'V' && update_enemies(g, i, j, ++k))
+				f(g->mlx, g->win, g->v, j * g->map.px, i * g->map.px);
 		}
 	}
 	mlx_string_put(g->mlx, g->win, 12, 22, 16777215, (char *)str);
