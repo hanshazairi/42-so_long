@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 19:33:17 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 01:13:40 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,11 @@ void	init_lines_and_images(char *file, t_game *g)
 	}
 	ret[i] = 0;
 	g->lines = ret;
-	g->o = mlx_png_file_to_image(g->mlx, "sprites/o.png", &g->map.px, \
-		&g->map.px);
-	g->c = mlx_png_file_to_image(g->mlx, "sprites/c.png", &g->map.px, \
-			&g->map.px);
-	g->e = mlx_png_file_to_image(g->mlx, "sprites/e.png", &g->map.px, \
-			&g->map.px);
-	g->p = mlx_png_file_to_image(g->mlx, "sprites/p.png", &g->map.px, \
-			&g->map.px);
-	g->v = mlx_png_file_to_image(g->mlx, "sprites/v.png", &g->map.px, \
-			&g->map.px);
+	g->o = mlx_png_file_to_image(g->mlx, "png/o.png", &g->map.px, &g->map.px);
+	g->c = mlx_png_file_to_image(g->mlx, "png/c.png", &g->map.px, &g->map.px);
+	g->e = mlx_png_file_to_image(g->mlx, "png/e.png", &g->map.px, &g->map.px);
+	g->p = mlx_png_file_to_image(g->mlx, "png/p.png", &g->map.px, &g->map.px);
+	g->v = mlx_png_file_to_image(g->mlx, "png/v.png", &g->map.px, &g->map.px);
 }
 
 void	init_enemies(t_game *g)
