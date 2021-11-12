@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:09:53 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 14:19:28 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 00:09:41 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,10 @@ static int	is_rectangular_and_cep(char *file, t_map *map)
 			map->cols = ft_strlen(line);
 		else if ((int)ft_strlen(line) != map->cols)
 			map->diff_cols = 1;
-		if (ft_strchr(line, 'C'))
-			map->c += char_count(line, 'C');
-		if (ft_strchr(line, 'E'))
-			map->e += char_count(line, 'E');
-		if (ft_strchr(line, 'P'))
-			map->p += char_count(line, 'P');
-		if (ft_strchr(line, 'V'))
-			map->v += char_count(line, 'V');
+		map->c += char_count(line, 'C');
+		map->e += char_count(line, 'E');
+		map->p += char_count(line, 'P');
+		map->v += char_count(line, 'V');
 		free(line);
 		line = get_next_line(fd);
 	}

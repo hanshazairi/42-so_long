@@ -6,32 +6,29 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 01:13:40 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 01:14:23 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include "so_long.h"
 #include "minilibx_mms_20200219/mlx.h"
-#include "libft/libft.h"
 
-static int	update_player(t_game *g, int i, int j)
+static int	update_p_or_v(t_game *g, int i, int j, int k)
 {
-	g->player.attempt.x = j;
-	g->player.attempt.y = i;
-	g->player.actual.x = j;
-	g->player.actual.y = i;
-	return (1);
-}
-
-static int	update_enemies(t_game *g, int i, int j, int k)
-{
-	g->enemies[k].attempt.x = j;
-	g->enemies[k].attempt.y = i;
-	g->enemies[k].actual.x = j;
-	g->enemies[k].actual.y = i;
+	if (k >= 0)
+	{
+		g->enemies[k].actual.x = j;
+		g->enemies[k].actual.y = i;
+	}
+	else
+	{
+		g->player.attempt.x = j;
+		g->player.attempt.y = i;
+		g->player.actual.x = j;
+		g->player.actual.y = i;
+	}
 	return (1);
 }
 
@@ -75,13 +72,11 @@ void	init_lines_and_images(char *file, t_game *g)
 
 void	init_enemies(t_game *g)
 {
-	int			k;
-	t_player	*enemies;
+	t_enemy	*enemies;
 
-	enemies = malloc(sizeof(t_player) * g->map.v);
+	enemies = malloc(sizeof(t_enemy) * g->map.v);
 	if (!enemies)
 		return ;
-	k = -1;
 	g->enemies = enemies;
 }
 
@@ -91,7 +86,6 @@ void	put_images(t_game *g)
 	int			j;
 	int			k;
 	int			(*f)(void *, void *, void *, int x, int y);
-	const char	*str = ft_itoa(g->player.moves);
 
 	f = mlx_put_image_to_window;
 	i = -1;
@@ -107,12 +101,10 @@ void	put_images(t_game *g)
 				f(g->mlx, g->win, g->c, j * g->map.px, i * g->map.px);
 			else if (g->lines[i][j] == 'E')
 				f(g->mlx, g->win, g->e, j * g->map.px, i * g->map.px);
-			else if (g->lines[i][j] == 'P' && update_player(g, i, j))
+			else if (g->lines[i][j] == 'P' && update_p_or_v(g, i, j, -1))
 				f(g->mlx, g->win, g->p, j * g->map.px, i * g->map.px);
-			else if (g->lines[i][j] == 'V' && update_enemies(g, i, j, ++k))
+			else if (g->lines[i][j] == 'V' && update_p_or_v(g, i, j, ++k))
 				f(g->mlx, g->win, g->v, j * g->map.px, i * g->map.px);
 		}
 	}
-	mlx_string_put(g->mlx, g->win, 12, 22, 16777215, (char *)str);
-	free((char *)str);
 }

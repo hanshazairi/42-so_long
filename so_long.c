@@ -6,13 +6,14 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:27:34 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 20:02:12 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 01:10:04 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <stdlib.h>
 #include "so_long.h"
 #include "minilibx_mms_20200219/mlx.h"
+#include "libft/libft.h"
 
 static int	red_circle_pressed(t_game *g)
 {
@@ -35,13 +36,15 @@ static int	key_hook(int keycode, t_game *g)
 			g->player.attempt.y = g->player.actual.y + 1;
 		else if (keycode == UP)
 			g->player.attempt.y = g->player.actual.y - 1;
-		move(g);
+		if (g->lines[g->player.attempt.y][g->player.attempt.x] != '1')
+			move(g);
 	}
 	return (0);
 }
 
 int	main(int argc, char **argv)
 {
+	char	*moves;
 	t_game	g;
 
 	init_g(&g);
@@ -53,11 +56,14 @@ int	main(int argc, char **argv)
 		init_lines_and_images(argv[1], &g);
 		init_enemies(&g);
 		put_images(&g);
+		moves = ft_itoa(g.player.moves);
+		mlx_string_put(g.mlx, g.win, 12, 22, 16777215, moves);
+		free(moves);
 		mlx_hook(g.win, 17, 0, red_circle_pressed, &g);
 		mlx_key_hook(g.win, key_hook, &g);
 		mlx_loop(g.mlx);
 	}
 	else
-		printf("Error\n");
+		ft_putendl_fd("Error", 2);
 	return (0);
 }

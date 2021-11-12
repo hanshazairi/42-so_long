@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/12 19:33:19 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 01:06:38 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct s_player
 	t_xy	actual;
 }	t_player;
 
+typedef struct s_enemy
+{
+	t_xy	actual;
+}	t_enemy;
+
 typedef struct s_map
 {
 	int		rows;
@@ -59,7 +64,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	t_player	player;
-	t_player	*enemies;
+	t_enemy		*enemies;
 	t_map		map;
 }	t_game;
 
