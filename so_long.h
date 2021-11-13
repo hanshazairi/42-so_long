@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 16:53:16 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 01:06:38 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:25:22 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,11 @@ typedef struct s_game
 	char		**lines;
 	void		*o;
 	void		*c;
+	void		*c2;
 	void		*e;
 	void		*p;
+	void		*p2;
+	void		*p3;
 	void		*v;
 	void		*mlx;
 	void		*win;

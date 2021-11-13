@@ -6,11 +6,12 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:27:34 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 01:10:04 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:22:59 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "so_long.h"
 #include "minilibx_mms_20200219/mlx.h"
 #include "libft/libft.h"
@@ -38,6 +39,11 @@ static int	key_hook(int keycode, t_game *g)
 			g->player.attempt.y = g->player.actual.y - 1;
 		if (g->lines[g->player.attempt.y][g->player.attempt.x] != '1')
 			move(g);
+		else
+		{
+			g->player.attempt.x = g->player.actual.x;
+			g->player.attempt.y = g->player.actual.y;
+		}
 	}
 	return (0);
 }

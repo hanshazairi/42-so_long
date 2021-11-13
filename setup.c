@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 01:14:23 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:27:11 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,12 @@ void	init_lines_and_images(char *file, t_game *g)
 	ret[i] = 0;
 	g->lines = ret;
 	g->o = mlx_png_file_to_image(g->mlx, "png/o.png", &g->map.px, &g->map.px);
-	g->c = mlx_png_file_to_image(g->mlx, "png/c.png", &g->map.px, &g->map.px);
+	g->c = mlx_png_file_to_image(g->mlx, "png/c1.png", &g->map.px, &g->map.px);
+	g->c2 = mlx_png_file_to_image(g->mlx, "png/c2.png", &g->map.px, &g->map.px);
 	g->e = mlx_png_file_to_image(g->mlx, "png/e.png", &g->map.px, &g->map.px);
-	g->p = mlx_png_file_to_image(g->mlx, "png/p.png", &g->map.px, &g->map.px);
+	g->p2 = mlx_png_file_to_image(g->mlx, "png/p1.png", &g->map.px, &g->map.px);
+	g->p3 = mlx_png_file_to_image(g->mlx, "png/p2.png", &g->map.px, &g->map.px);
+	g->p = g->p2;
 	g->v = mlx_png_file_to_image(g->mlx, "png/v.png", &g->map.px, &g->map.px);
 }
 

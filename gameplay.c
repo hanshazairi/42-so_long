@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 01:08:39 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/13 14:30:23 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,7 @@
 #include "minilibx_mms_20200219/mlx.h"
 #include "libft/libft.h"
 
-void	end_game(t_game *g)
-{
-	char	**tmp;
-
-	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'E' \
-			&& g->player.c == g->map.c)
-		printf("You win!\n");
-	else
-		printf("You lose!\n");
-	tmp = g->lines;
-	while (*tmp)
-		free(*tmp++);
-	free(g->lines);
-	if (g->enemies)
-		free(g->enemies);
-	mlx_destroy_image(g->mlx, g->o);
-	mlx_destroy_image(g->mlx, g->c);
-	mlx_destroy_image(g->mlx, g->e);
-	mlx_destroy_image(g->mlx, g->p);
-	mlx_destroy_image(g->mlx, g->v);
-	mlx_clear_window(g->mlx, g->win);
-	mlx_destroy_window(g->mlx, g->win);
-	free(g->mlx);
-	exit(0);
-}
-
-void	move_e(t_game *g)
+static void	move_e(t_game *g)
 {
 	int		k;
 	t_enemy	enemy;
@@ -61,6 +35,47 @@ void	move_e(t_game *g)
 	}
 }
 
+static void	animate(t_game *g)
+{
+	void	*tmp;
+
+	tmp = g->c;
+	g->c = g->c2;
+	g->c2 = tmp;
+	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
+		g->p = g->p3;
+	else
+		g->p = g->p2;
+}
+
+void	end_game(t_game *g)
+{
+	char	**tmp;
+
+	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'E' \
+			&& g->player.c == g->map.c)
+		printf("You win!\n");
+	else
+		printf("You lose!\n");
+	tmp = g->lines;
+	while (*tmp)
+		free(*tmp++);
+	free(g->lines);
+	if (g->enemies)
+		free(g->enemies);
+	mlx_destroy_image(g->mlx, g->o);
+	mlx_destroy_image(g->mlx, g->c);
+	mlx_destroy_image(g->mlx, g->c2);
+	mlx_destroy_image(g->mlx, g->e);
+	mlx_destroy_image(g->mlx, g->p2);
+	mlx_destroy_image(g->mlx, g->p3);
+	mlx_destroy_image(g->mlx, g->v);
+	mlx_clear_window(g->mlx, g->win);
+	mlx_destroy_window(g->mlx, g->win);
+	free(g->mlx);
+	exit(0);
+}
+
 void	move(t_game *g)
 {
 	char	*moves;
@@ -69,6 +84,7 @@ void	move(t_game *g)
 		end_game(g);
 	g->lines[g->player.actual.y][g->player.actual.x] = '0';
 	move_e(g);
+	animate(g);
 	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
 		g->player.c += 1;
 	else if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'E' \
@@ -79,6 +95,6 @@ void	move(t_game *g)
 	mlx_clear_window(g->mlx, g->win);
 	put_images(g);
 	moves = ft_itoa(g->player.moves);
-	mlx_string_put(g->mlx, g->win, 12, 22, 16777215, moves);
+	mlx_string_put(g->mlx, g->win, 12, 22, 0xFFFFFFFF, moves);
 	free(moves);
 }
