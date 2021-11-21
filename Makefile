@@ -8,6 +8,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+bonus: $(NAME)
+
 $(NAME): $(OBJECTS) minilibx libft
 	gcc -o $@ $(OBJECTS) -Lminilibx_opengl_20191021 -lmlx -Llibft -lft \
 		-framework OpenGL -framework AppKit -lz
@@ -31,4 +33,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all minilibx libft clean fclean re
+.PHONY: all bonus minilibx libft clean fclean re
