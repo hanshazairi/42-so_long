@@ -6,14 +6,14 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 14:30:23 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 15:23:38 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "so_long.h"
-#include "minilibx_mms_20200219/mlx.h"
+#include "minilibx_opengl_20191021/mlx.h"
 #include "libft/libft.h"
 
 static void	move_e(t_game *g)

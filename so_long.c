@@ -6,14 +6,14 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:27:34 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 14:22:59 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 15:23:39 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "so_long.h"
-#include "minilibx_mms_20200219/mlx.h"
+#include "minilibx_opengl_20191021/mlx.h"
 #include "libft/libft.h"
 
 static int	red_circle_pressed(t_game *g)

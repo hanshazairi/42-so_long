@@ -6,14 +6,14 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/13 14:27:11 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 15:20:40 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <stdlib.h>
 #include "so_long.h"
-#include "minilibx_mms_20200219/mlx.h"
+#include "minilibx_opengl_20191021/mlx.h"
 
 static int	update_p_or_v(t_game *g, int i, int j, int k)
 {
