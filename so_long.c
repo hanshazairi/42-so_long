@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 13:27:34 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/21 15:23:39 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 18:33:44 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 		init_enemies(&g);
 		put_images(&g);
 		moves = ft_itoa(g.player.moves);
-		mlx_string_put(g.mlx, g.win, 12, 22, 16777215, moves);
+		mlx_string_put(g.mlx, g.win, 12, 22, 0x00FFFFFF, moves);
 		free(moves);
 		mlx_hook(g.win, 17, 0, red_circle_pressed, &g);
 		mlx_key_hook(g.win, key_hook, &g);

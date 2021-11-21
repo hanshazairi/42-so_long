@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:30:11 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/21 15:20:40 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:20:32 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,10 @@ void	init_enemies(t_game *g)
 
 void	put_images(t_game *g)
 {
-	int			i;
-	int			j;
-	int			k;
-	int			(*f)(void *, void *, void *, int x, int y);
+	int	i;
+	int	j;
+	int	k;
+	int	(*f)(void *, void *, void *, int x, int y);
 
 	f = mlx_put_image_to_window;
 	i = -1;

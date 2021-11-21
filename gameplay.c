@@ -6,7 +6,7 @@
 /*   By: hbaddrul <hbaddrul@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 18:21:41 by hbaddrul          #+#    #+#             */
-/*   Updated: 2021/11/21 15:23:38 by hbaddrul         ###   ########.fr       */
+/*   Updated: 2021/11/21 19:21:36 by hbaddrul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "minilibx_opengl_20191021/mlx.h"
 #include "libft/libft.h"
 
-static void	move_e(t_game *g)
+static void	move_enemy(t_game *g)
 {
 	int		k;
 	t_enemy	enemy;
@@ -83,7 +83,7 @@ void	move(t_game *g)
 	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'V')
 		end_game(g);
 	g->lines[g->player.actual.y][g->player.actual.x] = '0';
-	move_e(g);
+	move_enemy(g);
 	animate(g);
 	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
 		g->player.c += 1;
@@ -95,6 +95,6 @@ void	move(t_game *g)
 	mlx_clear_window(g->mlx, g->win);
 	put_images(g);
 	moves = ft_itoa(g->player.moves);
-	mlx_string_put(g->mlx, g->win, 12, 22, 0xFFFFFFFF, moves);
+	mlx_string_put(g->mlx, g->win, 12, 22, 0x00FFFFFF, moves);
 	free(moves);
 }
