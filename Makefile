@@ -1,6 +1,5 @@
 NAME = so_long
-SOURCES = \
-	so_long.c get_next_line.c validate.c setup.c gameplay.c
+SOURCES = so_long.c get_next_line.c validate.c setup.c gameplay.c
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
